@@ -1,16 +1,16 @@
 ﻿namespace Sinav.Query.Entity
 {
-    public class PersonelQuery
+    public class OgrenciQuery
     {
 
-        public const string GetPersonelAl =
-        @"Select * from Personel";
+        public const string GetOgrenciAl =
+        @"Select * from Ogrenci";
 
-        public const string GetSecilenPersonelSql =
-        @"Select * from Personel personel WHERE Id=@Id";
+        public const string GetSecilenOgrenciSql =
+        @"Select * from Ogrenci WHERE Id=@Id";
 
-        public const string InsertPersonelSql =
-           @"INSERT INTO [dbo].[Personel]
+        public const string InsertOgrenciSql =
+           @"INSERT INTO [dbo].[Ogrenci]
            ([Adi]
            ,[Soyadi]
            ,[BolumAdi]
@@ -28,8 +28,8 @@
             @Sifre,
             )";
 
-        public const string UpdatePersonelSql =
-            @"UPDATE [dbo].[Personel]
+        public const string UpdateOgrenciSql =
+            @"UPDATE [dbo].[Ogrenci]
                                        SET [Adi] = @Adi
                                           ,[Soyadi] = @Soyadi
                                           ,[BolumAdi] = @BolumAdi
@@ -38,11 +38,11 @@
                                           ,[Sifre] = @Sifre
                                      WHERE Id=@Id";
 
-        public const string DeletePersonelSql =
-            @"DELETE FROM [dbo].[Personel]
+        public const string DeleteOgrenciSql =
+            @"DELETE FROM [dbo].[Ogrenci]
                                         WHERE Id=@Id";
 
         public const string GetSifreKontrolSql =
-            @"Select * From [dbo].[Personel] WHERE ( [KullaniciAdi] == @KullaniciAdi && [Sifre] == @Sifre)";
+            @"Select * From [dbo].[Ogrenci] WHERE ( [KullaniciAdi] == @KullaniciAdi && [Sifre] == @Sifre)";
     }
 }
