@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using Sinav.Models.Entity;
+using Sinav.Query.Entity;
 
 namespace Sinav.Controllers
 {
@@ -10,7 +11,7 @@ namespace Sinav.Controllers
     {
 
         private readonly IDbConnection _dbConnection;
-        public ApiController(IDbConnection dbConnection)
+        public PersonelController(IDbConnection dbConnection)
         {
             _dbConnection = dbConnection;
         }
@@ -23,7 +24,7 @@ namespace Sinav.Controllers
         }
 
         [HttpGet("api/GetAll")]
-        public async Task<PersonelEntity> GetSecilenDuyuruAsync(int Id)
+        public async Task<PersonelEntity> GetSecilenPersonelAsync(int Id)
         {
             return await new DapperRepository(_dbConnection).QueryFirstOrDefaultAsync<PersonelEntity>(
                 PersonelQuery.GetSecilenPersonelSql, new { Id = Id });
@@ -43,7 +44,7 @@ namespace Sinav.Controllers
                 PersonelQuery.UpdatePersonelSql, new { Id = Id, Adi = Adi, Soyadi = Soyadi, bolumAdi = bolumAdi, EmailAdresi = EmailAdresi, KullaniciAdi = KullaniciAdi, Sifre = Sifre });
         }
         [HttpGet("api/DeletePersonel")]
-        public async Task<PersonelEntity> GetSecilenDuyuruAsync(int Id)
+        public async Task<PersonelEntity> DeletePersonelAsync(int Id)
         {
             return await new DapperRepository(_dbConnection).QueryFirstOrDefaultAsync<PersonelEntity>(
                 PersonelQuery.DeletePersonelSql, new { Id = Id });
@@ -53,7 +54,7 @@ namespace Sinav.Controllers
         public async Task<PersonelEntity> GetSifreKontrolAsync(string KullaniciAdi, string Sifre)
         {
             return await new DapperRepository(_dbConnection).QueryFirstOrDefaultAsync<PersonelEntity>(
-                PersonelQuery.GetSifreKontrol, new { KullaniciAdi = KullaniciAdi, Sifre = Sifre });
+                PersonelQuery.GetSifreKontrolSql, new { KullaniciAdi = KullaniciAdi, Sifre = Sifre });
         }
     }
 }

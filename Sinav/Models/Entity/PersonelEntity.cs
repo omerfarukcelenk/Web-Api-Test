@@ -1,6 +1,6 @@
 ﻿namespace Sinav.Models.Entity
 {
-    public class Personel
+    public class PersonelEntity
     {
         public int Id { get; set; }
         public String Adi { get; set; }
