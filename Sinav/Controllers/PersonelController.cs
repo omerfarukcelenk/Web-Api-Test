@@ -49,6 +49,11 @@ namespace Sinav.Controllers
                 PersonelQuery.DeletePersonelSql, new { Id = Id });
         }
 
-
+        [HttpGet("api/GetSifreKontrol")]  // TRUE YA DA FALSE GÖNDERMEDEN  :(
+        public async Task<PersonelEntity> GetSifreKontrolAsync(string KullaniciAdi, string Sifre)
+        {
+            return await new DapperRepository(_dbConnection).QueryFirstOrDefaultAsync<PersonelEntity>(
+                PersonelQuery.GetSifreKontrol, new { KullaniciAdi = KullaniciAdi, Sifre = Sifre });
+        }
     }
 }
